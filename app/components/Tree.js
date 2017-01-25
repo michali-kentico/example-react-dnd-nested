@@ -6,17 +6,17 @@ const target = {
   drop() {},
 
   hover(props, monitor) {
-    const {id: draggedId, parent, items} = monitor.getItem()
+    const {id: draggedId, parent, items} = monitor.getItem();
 
-    if (!monitor.isOver({shallow: true})) return
+    if (!monitor.isOver({shallow: true})) return;
 
-    const descendantNode = props.find(props.parent, items)
-    if (descendantNode) return
-    if (parent == props.parent || draggedId == props.parent) return
+    const descendantNode = props.find(props.parent, items);
+    if (descendantNode) return;
+    if (parent == props.parent || draggedId == props.parent) return;
 
-    props.move(draggedId, props.id, props.parent)
+    props.move(draggedId, props.id, props.parent);
   }
-}
+};
 
 @DropTarget('ITEM', target, (connect, monitor) => ({
   connectDropTarget: connect.dropTarget()
@@ -30,7 +30,7 @@ export default class Tree extends Component {
   };
 
   render() {
-    const {connectDropTarget, items, parent, move, find} = this.props
+    const {connectDropTarget, items, parent, move, find} = this.props;
 
     return connectDropTarget(
       <div style={{

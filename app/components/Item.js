@@ -14,7 +14,7 @@ const source = {
   isDragging(props, monitor) {
     return props.id == monitor.getItem().id
   }
-}
+};
 
 const target = {
   canDrop() {
@@ -22,15 +22,15 @@ const target = {
   },
 
   hover(props, monitor) {
-    const {id: draggedId} = monitor.getItem()
-    const {id: overId} = props
+    const {id: draggedId} = monitor.getItem();
+    const {id: overId} = props;
 
-    if (draggedId == overId || draggedId == props.parent) return
-    if (!monitor.isOver({shallow: true})) return
+    if (draggedId == overId || draggedId == props.parent) return;
+    if (!monitor.isOver({shallow: true})) return;
 
-    props.move(draggedId, overId, props.parent)
+    props.move(draggedId, overId, props.parent);
   }
-}
+};
 
 @DropTarget('ITEM', target, connect => ({
   connectDropTarget: connect.dropTarget()
@@ -53,7 +53,7 @@ export default class Item extends Component {
     const {
       connectDropTarget, connectDragPreview, connectDragSource,
       item: {id, title, children}, parent, move, find
-    } = this.props
+    } = this.props;
 
     return connectDropTarget(connectDragPreview(
       <div>
